@@ -1,0 +1,9 @@
+.todo {
+    padding: 10px;
+    color: rgb(12, 12, 0);
+    background-color: rgb(245, 245, 245);
+}
+
+.todo>.icon {
+    margin-right: 10px;
+}
