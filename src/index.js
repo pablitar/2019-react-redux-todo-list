@@ -4,13 +4,15 @@ import './index.css';
 import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 
-import {createStore} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk'
 import {Provider} from 'react-redux';
 import todoApp from './reducers/todoApp';
 
 
-const store = createStore(todoApp);
+const doCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const store = createStore(todoApp, doCompose(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

@@ -23,6 +23,19 @@
   color: #61dafb;
 }
 
+.mainApp {
+  padding: 20px;
+}
+
+.options-container {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

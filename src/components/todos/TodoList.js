@@ -1,8 +1,16 @@
 import React from 'react';
 import Todo from './Todo';
+import './TodoList.css'
 
-export default function TodoList({ todos, toggleTodo }) {
-  return <div className="todo-list">
-    {todos.map(aTodo => <Todo key={aTodo.id} todo={aTodo} onClick={() => toggleTodo(aTodo.id)} />)}
-  </div>
+export default class TodoList extends React.Component {
+
+  componentDidMount() {
+    this.props.loadTodos();
+  }
+
+  render() {
+    return <div className={"todo-list " + this.props.status}>
+      {this.props.todos.map(aTodo => <Todo key={aTodo.id} todo={aTodo} onClick={() => this.props.toggleTodo(aTodo)} />)}
+    </div>
+  }
 }

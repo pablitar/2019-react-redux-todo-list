@@ -13,7 +13,9 @@ function getIcon(todo) {
 }
 
 export default function Todo({onClick,todo}) {
-  return <div className = "todo" onClick={onClick}>
+  const classes = ["todo"]
+  if(todo.requestId) classes.push("loading")
+  return <div className={classes.join(" ")} onClick={onClick}>
     <span className = "icon">{getIcon(todo)}</span><span style={getStyleFor(todo)} className="text">{todo.description}</span>
   </div>
 }

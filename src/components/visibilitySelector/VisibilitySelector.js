@@ -13,6 +13,7 @@ function VisibilityLink({isSelected, name, onClick}) {
 
 export default function VisibilitySelector({selected, onVisibilityChange}) {
   return <div className="visibilityLinks">
+    <span>Show: </span>
     {Object.values(VisibilityFilters).map(filter => {
       return <VisibilityLink isSelected={selected === filter} name={readableNames[filter]} onClick={() => onVisibilityChange(filter)} />
     })}

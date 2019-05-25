@@ -5,7 +5,7 @@ import TodoList from '../todos/TodoList';
 import VisibilitySelector from '../visibilitySelector/VisibilitySelector';
 
 import {connect} from 'react-redux';
-import { addTodo, toggleTodo } from '../../actions/todos';
+import { addTodo, toggleTodo, loadItems } from '../../actions/todos';
 import VisibilityFilters from '../../constants/visibilityFilters';
 import { toggleVisibility } from '../../actions/toggleVisibility';
 
@@ -21,10 +21,14 @@ function getVisibleTodos(state) {
   return state.todos.filter(isVisible)
 }
 
-const AddTodoFormConnected = connect(undefined, dispatch => {return {onTodoAdded: (description) => dispatch(addTodo(description))}})(AddTodoForm)
+const AddTodoFormConnected = 
+  connect(undefined, dispatch => {return {onTodoAdded: (description) => dispatch(addTodo(description))}})(AddTodoForm)
+
 const TodoListConnected = connect(
-  state => { return {todos: getVisibleTodos(state)}},
-  dispatch => {return {toggleTodo: (id) => dispatch(toggleTodo(id))}})(TodoList)
+  state => { return {todos: getVisibleTodos(state), status: state.listStatus}},
+  dispatch => {return {
+    loadTodos: () => dispatch(loadItems()),
+    toggleTodo: (todo) => dispatch(toggleTodo(todo))}})(TodoList)
 
 const VisiblitySelectorConnected = connect(
   state => { return {selected: state.visibilityFilter}},
@@ -35,12 +39,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h2>A Todo List</h2>
+          <h2>Todo List</h2>
         </header>
         <section className="mainApp">
-          <AddTodoFormConnected />
+          <div className="options-container">
+            <AddTodoFormConnected />
+            <VisiblitySelectorConnected />
+          </div>
           <TodoListConnected />
-          <VisiblitySelectorConnected />
         </section>
       </div>
     );

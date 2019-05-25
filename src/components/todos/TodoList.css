@@ -1,0 +1,26 @@
+.todo-list {
+    height: 50vh;
+    width: 50%;
+    margin: auto;
+    background-color: hsl(216, 100%, 98%);
+    border: 1px solid lightgray;
+    overflow-y: scroll;
+}
+
+.todo-list.loading {
+    opacity: 0.3;
+    animation: color-change-todos 1s linear infinite alternate both;
+}
+
+@keyframes color-change-todos {
+    0% {
+        background: hsl(216, 100%, 95%);
+    }
+    100% {
+        background: hsl(216, 100%, 85%);
+    }
+}
+
+.todo-list .todo {
+    margin-top: 2px;
+}
