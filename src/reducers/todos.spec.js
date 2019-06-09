@@ -8,7 +8,7 @@ import {
 const aTodoExample = {
   description: "learn react",
   done: false,
-  id: 1
+  _id: 1
 };
 
 describe("todos reducer", () => {
@@ -19,7 +19,7 @@ describe("todos reducer", () => {
   })
 
   it("should allow adding a new TODO to empty state", () => {
-    expect(todos(undefined, addTodo(aTodoExample.description, aTodoExample.id))).toEqual([aTodoExample]);
+    expect(todos(undefined, addTodo(aTodoExample.description, aTodoExample._id))).toEqual([aTodoExample]);
   })
 
   it("should allow adding a new TODO to an existing state", () => {

@@ -43,14 +43,14 @@ export function addTodo(description) {
   return createAsyncAction(
     () => fetch("api/todos", postWithJSONBody({description})), 
     ADD_TODO,
-    json => {return { todo: json}},
+    json => {return { todo: json }},
     {description}
   );
 }
 
 export function toggleTodo(todo) {
   return createAsyncAction(
-    () => fetch("api/todos/" + todo.id, putRequestWithJSONBody({...todo, done: !todo.done})), 
+    () => fetch("api/todos/" + todo._id, putRequestWithJSONBody({...todo, done: !todo.done})), 
     TOGGLE_TODO,
     json => {return { todo: json}},
     {todo}

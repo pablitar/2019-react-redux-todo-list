@@ -14,7 +14,7 @@ function toggleTodo({done, ...rest}, requestId) {
 
 function updateTodo(todos, id, update) {
   return todos.map(todo => {
-    if(todo.id === id) {
+    if(todo._id === id) {
       return update(todo);
     }
     return todo;
@@ -27,7 +27,7 @@ export function todos(todos = [], action) {
       return action.todos
     case ADD_TODO.loading:
       return [...todos, {
-        id: action.requestId,
+        _id: action.requestId,
         description: action.description,
         done: false,
         requestId: action.requestId
@@ -35,9 +35,9 @@ export function todos(todos = [], action) {
     case ADD_TODO.ok:
         return [...todos.filter(it => it.requestId !== action.requestId), action.todo]
     case TOGGLE_TODO.loading:
-      return updateTodo(todos, action.todo.id, todo => toggleTodo(todo, action.requestId))
+      return updateTodo(todos, action.todo._id, todo => toggleTodo(todo, action.requestId))
     case TOGGLE_TODO.ok:
-        return updateTodo(todos, action.todo.id, _ => action.todo)
+        return updateTodo(todos, action.todo._id, _ => action.todo)
     default:
       return todos
   }
