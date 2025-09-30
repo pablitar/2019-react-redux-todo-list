@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
     "react": "^16.8.4",
@@ -37,7 +37,7 @@
     "@storybook/addons": "^5.0.1",
     "@storybook/cli": "^5.0.1",
     "@storybook/react": "^5.0.1",
-    "@types/lodash": "^4.14.123",
+    "@types/lodash": "^4.17.20",
     "@types/ramda": "types/npm-ramda#dist",
     "babel-loader": "^8.0.5"
   },
